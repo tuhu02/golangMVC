@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/dist/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="relative bg-gray-800">
+      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="relative flex h-16 items-center justify-between">
+          <div
+            class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+          >
+            <div class="flex shrink-0 items-center">
+              <img
+                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+                alt="Your Company"
+                class="h-8 w-auto"
+              />
+            </div>
+            <div class="hidden sm:ml-6 sm:block">
+              <div class="flex space-x-4">
+                <a
+                  href="/"
+                  class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white"
+                  >Dashboard</a
+                >
+                <a
+                  href="/categories"
+                  class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white"
+                  >Category</a
+                >
+                <a
+                  href="/products"
+                  class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white"
+                  >Products</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mx-auto p-10 bg-blue-50">
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Tambah Product</h1>
+
+        <form method="POST" class="space-y-4">
+          <!-- Nama Product -->
+          <div>
+            <label
+              for="name"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Nama Product
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Masukkan nama product"
+            />
+          </div>
+
+          <!-- Kategori -->
+          <div>
+            <label
+              for="category_id"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Kategori
+            </label>
+            <select
+              id="category_id"
+              name="category_id"
+              required
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="">Pilih Kategori</option>
+              {{ range .categories }}
+              <option value="{{.Id}}">{{.Name}}</option>
+              {{ end }}
+            </select>
+          </div>
+
+          <!-- Stock -->
+          <div>
+            <label
+              for="stock"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Stock
+            </label>
+            <input
+              type="number"
+              id="stock"
+              name="stock"
+              required
+              min="0"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Masukkan jumlah stock"
+            />
+          </div>
+
+          <!-- Deskripsi -->
+          <div>
+            <label
+              for="description"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Deskripsi
+            </label>
+            <textarea
+              id="description"
+              name="description"
+              rows="4"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Masukkan deskripsi product"
+            ></textarea>
+          </div>
+
+          <!-- Tombol Submit -->
+          <div class="flex space-x-4">
+            <button
+              type="submit"
+              class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+            >
+              Simpan
+            </button>
+            <a
+              href="/products"
+              class="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors"
+            >
+              Batal
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="/dist/main.js" type="module"></script>
+  </body>
+</html>
